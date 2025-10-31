@@ -34,11 +34,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun FormulirPendaftaran(modifier: Modifier = Modifier){
+fun FormulirPendaftaran(modifier: Modifier = Modifier) {
     var nama by remember { mutableStateOf("") }
     var alamat by remember { mutableStateOf("") }
     var jenisKelamin by remember { mutableStateOf("") }
-    var status by remember { mutableStateOf("")}
+    var status by remember { mutableStateOf("") }
 
     val jenisList = listOf("Laki-laki", "Perempuan")
     val statusList = listOf("Janda", "Lajang", "Duda")
@@ -48,7 +48,7 @@ fun FormulirPendaftaran(modifier: Modifier = Modifier){
             .fillMaxSize()
             .background(Color(0xFFF6E6FF))
             .verticalScroll(rememberScrollState())
-    ){
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -64,74 +64,74 @@ fun FormulirPendaftaran(modifier: Modifier = Modifier){
                 modifier = Modifier.padding(start = 16.dp)
             )
         }
-    }
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(dimensionResource(R.dimen.padding_medium)),
-        shape = MaterialTheme.shapes.medium,
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
-    ){
-        Column(
+        Card(
             modifier = Modifier
-                .padding(dimensionResource(R.dimen.padding_medium))
-        ){
-            Text("NAMA LENGKAP", fontWeight = FontWeight.SemiBold)
-            OutlinedTextField(
-                value = nama,
-                onValueChange = { nama = it },
-                label = { Text("Nama Lengkap") },
-                placeholder = { Text("Isian nama lengkap") },
-                singleLine = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Text("JENIS KELAMIN", fontWeight = FontWeight.SemiBold)
-            jenisList.forEach { item ->
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    RadioButton(
-                        selected = jenisKelamin == item,
-                        onClick = { jenisKelamin = item }
-                    )
-                    Text(item)
-                }
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Text("STATUS PERKAWINAN", fontWeight = FontWeight.SemiBold)
-            statusList.forEach { item ->
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    RadioButton(
-                        selected = status == item,
-                        onClick = { status = item }
-                    )
-                    Text(item)
-                }
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Text("ALAMAT", fontWeight = FontWeight.SemiBold)
-            OutlinedTextField(
-                value = alamat,
-                onValueChange = { alamat = it },
-                label = { Text("Alamat") },
-                placeholder = { Text("Isian Alamat") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            // Tombol submit
-            Button(
-                onClick = { },
+                .fillMaxWidth()
+                .padding(dimensionResource(R.dimen.padding_medium)),
+            shape = MaterialTheme.shapes.medium,
+            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White)
+        ) {
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8A2BE2))
+                    .padding(dimensionResource(R.dimen.padding_medium))
             ) {
-                Text(stringResource(R.string.submit), color = Color.White)
+                Text("NAMA LENGKAP", fontWeight = FontWeight.SemiBold)
+                OutlinedTextField(
+                    value = nama,
+                    onValueChange = { nama = it },
+                    label = { Text("Nama Lengkap") },
+                    placeholder = { Text("Isian nama lengkap") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text("JENIS KELAMIN", fontWeight = FontWeight.SemiBold)
+                jenisList.forEach { item ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(
+                            selected = jenisKelamin == item,
+                            onClick = { jenisKelamin = item }
+                        )
+                        Text(item)
+                    }
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text("STATUS PERKAWINAN", fontWeight = FontWeight.SemiBold)
+                statusList.forEach { item ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(
+                            selected = status == item,
+                            onClick = { status = item }
+                        )
+                        Text(item)
+                    }
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text("ALAMAT", fontWeight = FontWeight.SemiBold)
+                OutlinedTextField(
+                    value = alamat,
+                    onValueChange = { alamat = it },
+                    label = { Text("Alamat") },
+                    placeholder = { Text("Isian Alamat") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                // Tombol submit
+                Button(
+                    onClick = { },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8A2BE2))
+                ) {
+                    Text(stringResource(R.string.submit), color = Color.White)
+                }
             }
         }
     }
