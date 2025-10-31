@@ -117,6 +117,8 @@ fun FormulirPendaftaran(modifier: Modifier = Modifier){
                 placeholder = { Text("Isian Alamat") },
                 modifier = Modifier.fillMaxWidth()
             )
+
+            Spacer(modifier = Modifier.height(24.dp))
         }
     }
 }
