@@ -3,12 +3,17 @@ package com.example.formpendaftaran_094
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -18,6 +23,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -51,6 +58,31 @@ fun FormulirPendaftaran(modifier: Modifier = Modifier){
                 fontSize = 28.sp,
                 modifier = Modifier.padding(start = 16.dp)
             )
+        }
     }
-}
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(dimensionResource(R.dimen.padding_medium)),
+        shape = MaterialTheme.shapes.medium,
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
+    ){
+        Column(
+            modifier = Modifier
+                .padding(dimensionResource(R.dimen.padding_medium))
+        ){
+            Text("NAMA LENGKAP", fontWeight = FontWeight.SemiBold)
+            OutlinedTextField(
+                value = nama,
+                onValueChange = { nama = it },
+                label = { Text("Nama Lengkap") },
+                placeholder = { Text("Isian nama lengkap") },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+
+        }
+    }
 }
